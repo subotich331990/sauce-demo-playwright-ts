@@ -1,5 +1,7 @@
 import  { Page } from '@playwright/test';
-export class HeaderPage { 
+import { Actions } from './astracts-classes/actions.class';
+
+export class HeaderPage extends Actions { 
     readonly page        : Page;
     readonly mainLogo    : string;
     readonly cartButton  : string;
@@ -8,6 +10,7 @@ export class HeaderPage {
     readonly shoppingCart: string;
 
     constructor(page: Page) {
+        super(page);
         this.page         = page;
         this.mainLogo     = '.app_logo';
         this.cartButton   = '#shopping_cart_container';
@@ -17,7 +20,7 @@ export class HeaderPage {
     }
 
     openMenu = async (): Promise<void> => {
-        
+        await this.clickOnElement(this.burgerButton);
     } 
 
 

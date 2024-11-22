@@ -30,12 +30,12 @@ export class HeaderPageValidator extends HeaderPage {
      * const headerPage = new HeaderPage(page);
      * await headerPage.primaryHeader('Swag Labs', 'Products');
      */
-    primaryHeader = async (appLogo: string, title: string ): Promise<void> => {
+    primaryHeader = async (validHeaderText: { appLogoText: string, titleSectionText: string } ): Promise<void> => {
         await expect(await this.mainLogoLocator).toBeVisible();
-        await expect(await this.mainLogoLocator).toHaveText(appLogo);
+        await expect(await this.mainLogoLocator).toHaveText(validHeaderText.appLogoText);
 
         await expect(await this.titleSectionLocator).toBeVisible();
-        await expect(await this.titleSectionLocator).toHaveText(title);
+        await expect(await this.titleSectionLocator).toHaveText(validHeaderText.titleSectionText);
 
         await expect(await this.burgerButtonLocator).toBeVisible();
         await expect(await this.shoppingCartLocator).toBeVisible();
