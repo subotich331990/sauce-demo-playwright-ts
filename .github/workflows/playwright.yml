@@ -4,6 +4,14 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+env:
+STANDARD_USER           : ${{ secret.STANDARD_USER            }}
+LOCKEDOUT_USER          : ${{ secret.LOCKEDOUT_USER           }}
+PROBLEM_USER            : ${{ secret.PROBLEM_USER             }}
+PERFORMANCE_GLITCH_USER : ${{ secret.PERFORMANCE_GLITCH_USER  }}
+ERROR_USER              : ${{ secret.ERROR_USER               }}
+VISUAL_USER             : ${{ secret.VISUAL_USER              }}
+PASSWORD                : ${{ secret.PASSWORD                 }}
 jobs:
   test:
     timeout-minutes: 60
@@ -25,3 +33,4 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
