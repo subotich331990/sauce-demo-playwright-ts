@@ -6,7 +6,7 @@ type Hooks = {
 
 export const test = base.extend<pageObjects & Hooks>({
     navigateTo: async ({ page, loginPage }, use) => {
-        await loginPage.goToPage('/')
+        await loginPage.goToPage('https://www.saucedemo.com/')
         await use(() => {loginPage});
         await page.close({ reason: 'done' });
     }
