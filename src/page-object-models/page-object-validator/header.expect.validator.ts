@@ -37,14 +37,14 @@ export class HeaderPageValidator extends HeaderPage {
      * });
      */
     primaryHeader = async (validHeaderText: { appLogoText: string, titleSectionText: string } ): Promise<void> => {
-        await expect(await this.mainLogoLocator).toBeVisible();
-        await expect(await this.mainLogoLocator).toHaveText(validHeaderText.appLogoText);
+        await expect(this.mainLogoLocator).toBeVisible();
+        await expect(this.mainLogoLocator).toHaveText(validHeaderText.appLogoText);
 
-        await expect(await this.titleSectionLocator).toBeVisible();
-        await expect(await this.titleSectionLocator).toHaveText(validHeaderText.titleSectionText);
+        await expect(this.titleSectionLocator).toBeVisible();
+        await expect(this.titleSectionLocator).toHaveText(validHeaderText.titleSectionText);
 
-        await expect(await this.burgerButtonLocator).toBeVisible();
-        await expect(await this.shoppingCartLocator).toBeVisible();
+        await expect(this.burgerButtonLocator).toBeVisible();
+        await expect(this.shoppingCartLocator).toBeVisible();
 
     };
 

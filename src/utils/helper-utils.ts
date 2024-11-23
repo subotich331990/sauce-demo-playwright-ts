@@ -18,6 +18,7 @@ export class HelperUtils {
     * await loginButton.click();
     */
     getPageLocator = async (selector: string): Promise<Locator> => {
-        return this.page.locator(selector);
+        const locator = await this.page.locator(selector);
+        return locator;
     };
 }
