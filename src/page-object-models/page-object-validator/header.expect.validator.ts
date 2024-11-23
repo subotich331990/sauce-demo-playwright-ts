@@ -19,16 +19,22 @@ export class HeaderPageValidator extends HeaderPage {
         this.shoppingCartLocator = this.helperUtils.getPageLocator(this.shoppingCart);
     }
 
+
     /**
-     * Validate the header page
-     * @param {string} appLogo - The App Logo text
-     * @param {string} title - The title text
+     * Validates the primary header section of the page.
+     * 
+     * @param {Object} validHeaderText - An object that contains the expected text of the app logo and the title section.
+     * @param {string} validHeaderText.appLogoText - The expected text of the app logo.
+     * @param {string} validHeaderText.titleSectionText - The expected text of the title section.
+     * 
      * @example
-     * const { page } = await test.step('Visit the login page', async () => {
-     *   await page.goto('https://www.saucedemo.com');
+     * Example of how to use it:
+     * test('Validate primary header', async ({ page, headerTextsValidator }) => {
+     *     await headerTextsValidator.primaryHeader({
+     *         appLogoText: 'Swag Labs',
+     *         titleSectionText: 'Products'
+     *     });
      * });
-     * const headerPage = new HeaderPage(page);
-     * await headerPage.primaryHeader('Swag Labs', 'Products');
      */
     primaryHeader = async (validHeaderText: { appLogoText: string, titleSectionText: string } ): Promise<void> => {
         await expect(await this.mainLogoLocator).toBeVisible();
