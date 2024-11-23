@@ -11,8 +11,8 @@ import { configDotenv } from 'dotenv';
 configDotenv()
 
 const validCredentials = { 
-    username: process.env.STANDARD_USER ?? '',
-    password: process.env.PASSWORD ?? ''
+    username: 'standard_user',//process.env.STANDARD_USER ?? '',
+    password: 'secret_sauce'//process.env.PASSWORD ?? ''
 }
 const LoginFormStatusValues = {
     placeholderUsernameValue: login.loginTexts().USERNAME_PLACEHOLDER,

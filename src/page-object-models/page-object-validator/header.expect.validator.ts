@@ -1,22 +1,19 @@
-import { expect, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { HeaderPage } from "../header.page";
-import { HelperUtils } from "../../utils/helper-utils";
 
 export class HeaderPageValidator extends HeaderPage {
 
-    helperUtils = new HelperUtils(this.page);
-
-    readonly mainLogoLocator    : any;
-    readonly titleSectionLocator: any;
-    readonly burgerButtonLocator: any;
-    readonly shoppingCartLocator: any;
+    readonly mainLogoLocator    : Locator;
+    readonly titleSectionLocator: Locator;
+    readonly burgerButtonLocator: Locator;
+    readonly shoppingCartLocator: Locator;
     
     constructor(page: Page) { 
         super(page);
-        this.mainLogoLocator     = this.helperUtils.getPageLocator(this.mainLogo);
-        this.titleSectionLocator = this.helperUtils.getPageLocator(this.titleSection);
-        this.burgerButtonLocator = this.helperUtils.getPageLocator(this.burgerButton);
-        this.shoppingCartLocator = this.helperUtils.getPageLocator(this.shoppingCart);
+        this.mainLogoLocator     = this.page.locator(this.mainLogo);
+        this.titleSectionLocator = this.page.locator(this.titleSection);
+        this.burgerButtonLocator = this.page.locator(this.burgerButton);
+        this.shoppingCartLocator = this.page.locator(this.shoppingCart);
     }
 
 

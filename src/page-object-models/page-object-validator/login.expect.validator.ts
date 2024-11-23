@@ -1,14 +1,11 @@
-import { expect, Page } from "@playwright/test";
+import { expect, Page, Locator } from "@playwright/test";
 import { LoginPage } from "../login.page";
-import { HelperUtils } from "../../utils/helper-utils";
 
 export class LoginPageValidator extends LoginPage {
 
-    helperUtils = new HelperUtils(this.page);
-
-    readonly usernameInputLocator: any
-    readonly passwordStateLocator: any
-    readonly loginButtonLocator  : any;
+    readonly usernameInputLocator: Locator
+    readonly passwordStateLocator: Locator
+    readonly loginButtonLocator  : Locator;
     
     /**
      * Initializes the `usernameInputLocator`, `passwordStateLocator`, and `loginButtonLocator` 
@@ -17,9 +14,9 @@ export class LoginPageValidator extends LoginPage {
      */
     constructor(page: Page) { 
         super(page);
-        this.usernameInputLocator = this.helperUtils.getPageLocator(this.username);
-        this.passwordStateLocator = this.helperUtils.getPageLocator(this.password);
-        this.loginButtonLocator   = this.helperUtils.getPageLocator(this.loginButton);
+        this.usernameInputLocator = this.page.locator(this.username);
+        this.passwordStateLocator = this.page.locator(this.password);
+        this.loginButtonLocator   = this.page.locator(this.loginButton);
     }
 
     /**
