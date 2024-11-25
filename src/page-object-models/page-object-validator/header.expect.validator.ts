@@ -3,17 +3,19 @@ import { HeaderPage } from "../header.page";
 
 export class HeaderPageValidator extends HeaderPage {
 
-    readonly mainLogoLocator    : Locator;
+    readonly mainLogoLocator: Locator;
     readonly titleSectionLocator: Locator;
     readonly burgerButtonLocator: Locator;
     readonly shoppingCartLocator: Locator;
-    
-    constructor(page: Page) { 
+    readonly cartBadgeLocator: Locator;
+
+    constructor(page: Page) {
         super(page);
-        this.mainLogoLocator     = this.page.locator(this.mainLogo);
+        this.mainLogoLocator = this.page.locator(this.mainLogo);
         this.titleSectionLocator = this.page.locator(this.titleSection);
         this.burgerButtonLocator = this.page.locator(this.burgerButton);
         this.shoppingCartLocator = this.page.locator(this.shoppingCart);
+        this.cartBadgeLocator = this.page.getByTestId(this.shoppingCartBage);
     }
 
 
@@ -33,19 +35,24 @@ export class HeaderPageValidator extends HeaderPage {
      *     });
      * });
      */
-    primaryHeader = async (validHeaderText: { appLogoText: string, titleSectionText: string } ): Promise<void> => {
-        await expect(this.mainLogoLocator).toBeVisible();
-        await expect(this.mainLogoLocator).toHaveText(validHeaderText.appLogoText);
+    primaryHeader = async (validHeaderText: { appLogoText: string | undefined, titleSectionText: string | undefined }): Promise<void> => {
+        if( validHeaderText.appLogoText != undefined ) {
+            await expect(this.mainLogoLocator).toBeVisible();
+            await expect(this.mainLogoLocator).toHaveText(validHeaderText.appLogoText);
+        }
 
+        if( validHeaderText.titleSectionText != undefined ) {
         await expect(this.titleSectionLocator).toBeVisible();
         await expect(this.titleSectionLocator).toHaveText(validHeaderText.titleSectionText);
+        }
 
         await expect(this.burgerButtonLocator).toBeVisible();
         await expect(this.shoppingCartLocator).toBeVisible();
-
     };
 
-
+    cartBadge = async (): Promise<void> => {
+        await expect(this.cartBadgeLocator).toBeVisible();
+    }
 
 
 }

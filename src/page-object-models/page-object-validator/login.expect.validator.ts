@@ -39,18 +39,18 @@ export class LoginPageValidator extends LoginPage {
      * await loginPageValidator.initialStatusLoginForm(objectParams);
      */
     initialStatusLoginForm = async (objectParams: { placeholderUsernameValue: string, placeholderPasswordValue: string, loginButtonValue: string }): Promise<void> => {
-        await expect(await this.usernameInputLocator).toBeVisible();
-        await expect(await this.usernameInputLocator).toBeEmpty();
-        await expect(await this.usernameInputLocator).toHaveAttribute('placeholder', objectParams.placeholderUsernameValue);
+        await expect(this.usernameInputLocator).toBeVisible();
+        await expect(this.usernameInputLocator).toBeEmpty();
+        await expect(this.usernameInputLocator).toHaveAttribute('placeholder', objectParams.placeholderUsernameValue);
 
-        await expect(await this.passwordStateLocator).toBeVisible();
-        await expect(await this.passwordStateLocator).toBeEmpty();
-        await expect(await this.passwordStateLocator).toHaveAttribute('placeholder', objectParams.placeholderPasswordValue);
+        await expect(this.passwordStateLocator).toBeVisible();
+        await expect(this.passwordStateLocator).toBeEmpty();
+        await expect(this.passwordStateLocator).toHaveAttribute('placeholder', objectParams.placeholderPasswordValue);
 
-        await expect(await this.loginButtonLocator).toBeVisible();
-        await expect(await this.loginButtonLocator).toHaveAttribute('type', 'submit');
-        await expect(await this.loginButtonLocator).toHaveAccessibleName('Login');
-        await expect(await this.loginButtonLocator).toHaveText(objectParams.loginButtonValue);
+        await expect(this.loginButtonLocator).toBeVisible();
+        await expect(this.loginButtonLocator).toHaveAttribute('type', 'submit');
+        await expect(this.loginButtonLocator).toHaveAccessibleName('Login');
+        await expect(this.loginButtonLocator).toHaveText(objectParams.loginButtonValue);
     };
 
 };

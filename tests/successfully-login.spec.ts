@@ -1,11 +1,11 @@
 import { test } from '../src/fixtures/merge-fixtures/index.fixtures';
-import * as objectsParams from '../src/data/texts-objects-params.data'
+import * as objectsParams from '../src/data/objects-params/texts-objects-params.data'
 
-test('successfully login', async ({ navigateTo, loginPage, loginTextsValidator, headerTextsValidator }) => {
+test('successfully login', async ({ navigateTo, loginPage, loginPageValidator, headerPageValidator }) => {
 
     await test.step('Validate initial status login form', async () => {
 
-        await loginTextsValidator.initialStatusLoginForm(objectsParams.LoginFormStatusValues);
+        await loginPageValidator.initialStatusLoginForm(objectsParams.LoginFormStatusValues);
 
     });
 
@@ -17,7 +17,7 @@ test('successfully login', async ({ navigateTo, loginPage, loginTextsValidator, 
 
     await test.step('Expect to Navigate to home page', async () => {
 
-        await headerTextsValidator.primaryHeader(objectsParams.validHeaderText);
+        await headerPageValidator.primaryHeader(objectsParams.validHeaderMainText);
 
     });
 

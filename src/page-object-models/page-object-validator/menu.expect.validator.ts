@@ -1,9 +1,7 @@
 import { Page ,expect } from "@playwright/test";
-import { HelperUtils } from "../../utils/helper-utils";
 import { MenuPage } from "../menu.page";
 
 export class MenuPageValidator extends MenuPage {
-    helperUtils = new HelperUtils(this.page)
 
     readonly menuContainerLocator  : any
     readonly allItemsOptionLocator : any
@@ -17,11 +15,11 @@ export class MenuPageValidator extends MenuPage {
      */
     constructor(page: Page) { 
         super(page);
-        this.menuContainerLocator  = this.helperUtils.getPageLocator(this.menuContainer);
-        this.allItemsOptionLocator = this.helperUtils.getPageLocator(this.allItemsOption);
-        this.aboutOptionLocator    = this.helperUtils.getPageLocator(this.aboutOption);
-        this.logoutOptionLocator   = this.helperUtils.getPageLocator(this.logoutOption);
-        this.resetAppStateOptionLocator = this.helperUtils.getPageLocator(this.resetAppStateOption);
+        this.menuContainerLocator       = this.page.locator(this.menuContainer);
+        this.allItemsOptionLocator      = this.page.locator(this.allItemsOption);
+        this.aboutOptionLocator         = this.page.locator(this.aboutOption);
+        this.logoutOptionLocator        = this.page.locator(this.logoutOption);
+        this.resetAppStateOptionLocator = this.page.locator(this.resetAppStateOption);
     }
 
     menuContainerOptionTexts = async (objectParams: { allItemsOptionText: string, aboutOptionText: string, logoutOptionText: string, resetAppStateOptionText: string }): Promise<void> => {

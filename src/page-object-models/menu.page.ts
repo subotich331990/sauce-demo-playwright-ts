@@ -16,7 +16,5 @@ export class MenuPage {
         this.logoutOption   = '#logout_sidebar_link';
     }
 
-    gotoSauceLAbstPage = async (baseURL: string): Promise<void> => {
-        
-    }
+
 }

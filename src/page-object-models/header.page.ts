@@ -8,6 +8,7 @@ export class HeaderPage extends Actions {
     readonly burgerButton: string;
     readonly titleSection: string;
     readonly shoppingCart: string;
+    readonly shoppingCartBage: string;
 
     constructor(page: Page) {
         super(page);
@@ -15,13 +16,22 @@ export class HeaderPage extends Actions {
         this.mainLogo     = '.app_logo';
         this.cartButton   = '#shopping_cart_container';
         this.burgerButton = '#react-burger-menu-btn';
-        this.titleSection = 'span[class="title"]';
+        this.titleSection = 'span[data-test="title"]';
         this.shoppingCart = '[data-test="shopping-cart-link"]';
+        this.shoppingCartBage = 'shopping-cart-badge';
     }
 
     openMenu = async (): Promise<void> => {
         await this.clickOnElement(this.burgerButton);
-    } 
-
+    }
+    
+    /**
+     * Opens the shopping cart page.
+     * @example
+     *  await headerPage.goToCart();
+     */
+    goToCart = async (): Promise<void> => {
+        await this.clickOnElement(this.cartButton);
+    }
 
 };
